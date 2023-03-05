@@ -1,8 +1,8 @@
 {
-  "name": "typescript-boilerplate",
+  "name": "career-peek",
   "version": "1.0.1",
-  "description": "",
-  "author": "CAN CEVIK & CANMERTINYO",
+  "description": "PERSONAL PROJECT, I JUST TESTING MY KNOWLEDGE.",
+  "author": "CAN CEVIK(CREATOR OF THIS TEMPLATE) & CANMERTINYO",
   "license": "GNU GENERAL PUBLIC LICENSE",
   "keywords": [],
   "main": "dist/src/index.js",
@@ -15,18 +15,23 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
     "@types/jest": "^28.1.6",
-    "@types/node": "^18.6.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.7",
-    "@typescript-eslint/parser": "^5.30.7",
-    "eslint": "^8.20.0",
-    "eslint-config-prettier": "^8.5.0",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.14.6",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.3",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.4",
     "ts-jest": "^28.0.7",
-    "typescript": "^4.7.4"
+    "tsc-watch": "^6.0.0",
+    "typescript": "^4.9.5"
   },
   "repository": {
     "type": "git",
@@ -35,5 +40,15 @@
   "bugs": {
     "url": "https://github.com/canmertinyo/typescript-boilerplate/issues"
   },
-  "homepage": "https://github.com/canmertinyo/typescript-boilerplate#readme"
+  "homepage": "https://github.com/canmertinyo/typescript-boilerplate#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "module-alias": "^2.2.2",
+    "mongoose": "^7.0.0",
+    "morgan": "^1.10.0"
+  }
 }
