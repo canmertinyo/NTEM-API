@@ -7,7 +7,10 @@
   "keywords": [],
   "main": "dist/src/index.js",
   "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
     "build": "tsc",
+    "postinstall": "npm run build",
     "build:dev": "tsc --watch",
     "test": "jest",
     "lint": "eslint --ext .js,.ts .",
