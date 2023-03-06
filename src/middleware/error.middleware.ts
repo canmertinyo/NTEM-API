@@ -15,4 +15,6 @@ export default function errorMiddleware(
         status,
         message
     });
+
+    next();
 }

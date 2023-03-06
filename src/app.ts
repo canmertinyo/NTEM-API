@@ -20,7 +20,7 @@ export class App extends BaseAppController {
     constructor(controllers: Controller[]) {
         super();
         this.express = express();
-        this.port = Number(process.env.PORT || 8080);
+        this.port = Number(process.env.PORT);
 
         this.initialiseDatabaseConnection();
         this.initialiseMiddleware();
