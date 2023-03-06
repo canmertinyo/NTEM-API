@@ -1,8 +1,8 @@
 {
-    "name": "career-peek",
-    "version": "1.0.1",
+    "name": "ntem-api",
+    "version": "1.0.2",
     "description": "PERSONAL PROJECT, I JUST TESTING MY KNOWLEDGE.",
-    "author": "CAN CEVIK(CREATOR OF THIS TEMPLATE) & CANMERTINYO",
+    "author": "CAN CEVIK(CREATOR OF THIS TEMPLATE) & CANMERTINYO (CREATOR OF THIS API)",
     "license": "GNU GENERAL PUBLIC LICENSE",
     "keywords": [],
     "main": "dist/src/index.js",
@@ -45,6 +45,7 @@
     },
     "homepage": "https://github.com/canmertinyo/typescript-boilerplate#readme",
     "dependencies": {
+        "chalk": "^4.0.0",
         "compression": "^1.7.4",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
@@ -54,12 +55,12 @@
         "joi": "^17.8.3",
         "module-alias": "^2.2.2",
         "mongoose": "^7.0.0",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "remove": "^0.1.5"
     },
-
     "_moduleAliases": {
         "@/resources": "dist/resources",
         "@/utils": "dist/utils",
         "@/middleware": "dist/middleware"
-      }
+    }
 }

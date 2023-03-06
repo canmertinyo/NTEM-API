@@ -5,6 +5,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import chalk from 'chalk';
 
 dotenv.config({ path: '.env' });
 
@@ -55,16 +56,18 @@ export class App extends BaseAppController {
         mongoose
             .connect(mongoDatabaseUri)
             .then(() => {
-                console.log('connected to database');
+                console.log(chalk.green.bold('Connected to database!'));
             })
-            .catch((error: any) => {
-                console.log('failed to connect database' + error);
+            .catch((error: unknown) => {
+                console.log(chalk.red.bold('Can not connect to database!' + error));
             });
     }
 
     public listen(): void {
         this.express.listen(this.port, () => {
-            console.log('working on port' + this.port);
+            console.log(
+                chalk.green.bold('api is up and running on port ' + chalk.blue.bold(this.port))
+            );
         });
     }
 }
