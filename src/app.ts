@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -7,17 +7,20 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 
 import { Controller } from '@/utils/interfaces/controller.interface';
-import { ErrorMiddleware } from '@/middleware/error.middleware';
+import ErrorMiddleware from '@/middleware/error.middleware';
+
+import { BaseAppController } from './utils/interfaces/app.controller';
 
 dotenv.config({ path: '.env' });
 
-class App {
+export class App extends BaseAppController {
     public express: Application;
     public port: number;
 
-    constructor(controllers: Controller[], port: number) {
+    constructor(controllers: Controller[]) {
+        super();
         this.express = express();
-        this.port = port || 8080;
+        this.port = Number(process.env.PORT || 8080);
 
         this.initialiseDatabaseConnection();
         this.initialiseMiddleware();
@@ -25,7 +28,7 @@ class App {
         this.initialiseErrorHandling();
     }
 
-    private initaliseMiddleware(): void {
+    protected initialiseMiddleware(): void {
         this.express.use(helmet());
         this.express.use(compression());
         this.express.use(morgan('dev'));
@@ -34,18 +37,18 @@ class App {
         this.express.use(cors());
     }
 
-    private initialiseControllers(controllers: Controller[]): void {
+    protected initialiseControllers(controllers: Controller[]): void {
         controllers.forEach((controller: Controller) => {
             this.express.use('/api/', controller.router);
         });
     }
 
-    private initialiseErrorHandling(): void {
-        this.express.use(ErrorMiddleware());
+    protected initialiseErrorHandling(): void {
+        this.express.use(ErrorMiddleware);
     }
 
-    private initialiseDatabaseConnection(): void {
-        const mongoDatabaseUri = process.env.MONGO_PATH as string;
+    protected initialiseDatabaseConnection(): void {
+        const mongoDatabaseUri = <string>process.env.MONGO_PATH;
 
         mongoose.set('strictQuery', true);
 
