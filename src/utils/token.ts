@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import { IUser, IToken } from '@/utils/interfaces';
 
-export const createToken = (user: User): string => {
+export const createToken = (user: IUser): string => {
     const jwtSecret = process.env.JWT_SECRET as jwt.Secret;
     const payload = {
         userId: user._id
