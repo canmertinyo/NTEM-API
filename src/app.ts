@@ -6,21 +6,21 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 
+dotenv.config({ path: '.env' });
+
 import { Controller } from '@/utils/interfaces/controller.interface';
 import ErrorMiddleware from '@/middleware/error.middleware';
 
 import { BaseAppController } from './utils/interfaces/app.controller';
 
-dotenv.config({ path: '.env' });
-
 export class App extends BaseAppController {
     public express: Application;
     public port: number;
 
-    constructor(controllers: Controller[]) {
+    constructor(controllers: Controller[], port: number) {
         super();
         this.express = express();
-        this.port = Number(process.env.PORT);
+        this.port = port;
 
         this.initialiseDatabaseConnection();
         this.initialiseMiddleware();
@@ -48,7 +48,7 @@ export class App extends BaseAppController {
     }
 
     protected initialiseDatabaseConnection(): void {
-        const mongoDatabaseUri = <string>process.env.MONGO_PATH;
+        const mongoDatabaseUri = process.env.MONGO_PATH as string;
 
         mongoose.set('strictQuery', true);
 

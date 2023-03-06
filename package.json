@@ -56,17 +56,10 @@
         "mongoose": "^7.0.0",
         "morgan": "^1.10.0"
     },
+
     "_moduleAliases": {
-        "paths": {
-            "@/resources/*": [
-                "dist/resources/*"
-            ],
-            "@/utils/*": [
-                "dist/utils/*"
-            ],
-            "@/middleware/*": [
-                "dist/middleware/*"
-            ]
-        }
-    }
+        "@/resources": "dist/resources",
+        "@/utils": "dist/utils",
+        "@/middleware": "dist/middleware"
+      }
 }
