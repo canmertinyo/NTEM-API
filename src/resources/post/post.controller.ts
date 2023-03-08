@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import { ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCode } from 'http-status-codes';
 
 import { Controller, PostControllerSchema } from '@/utils/interfaces';
 import { HttpException } from '@/utils/exceptions/http.exception';
@@ -30,9 +31,9 @@ export class PostController extends PostControllerSchema implements Controller {
 
             const post = await this.PostService.create(title, body);
 
-            res.status(201).json({ post });
+            res.status(StatusCodes.CREATED).json({ post });
         } catch (error) {
-            next(new HttpException(400, 'cannot create post'));
+            next(new HttpException(StatusCodes.BAD_REQUEST, 'cannot create post'));
         }
     };
 }

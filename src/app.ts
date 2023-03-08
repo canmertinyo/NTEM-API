@@ -23,10 +23,10 @@ export class App extends BaseAppController {
         this.express = express();
         this.port = port;
 
-        this.initialiseDatabaseConnection();
-        this.initialiseMiddleware();
-        this.initialiseControllers(controllers);
-        this.initialiseErrorHandling();
+        this.initialiseDatabaseConnection(); //ok
+        this.initialiseMiddleware(); //ok
+        this.initialiseControllers(controllers); //ok
+        this.initialiseErrorHandling(); //ok
     }
 
     protected initialiseMiddleware(): void {
@@ -45,7 +45,7 @@ export class App extends BaseAppController {
     }
 
     protected initialiseErrorHandling(): void {
-        this.express.use(ErrorMiddleware);
+        this.express.use(ErrorMiddleware); //ok
     }
 
     protected initialiseDatabaseConnection(): void {

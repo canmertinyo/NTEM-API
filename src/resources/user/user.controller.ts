@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import { ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCode } from 'http-status-codes';
 
 import { Controller } from '@/utils/interfaces';
 import { HttpException } from '@/utils/exceptions/http.exception';
@@ -33,9 +34,9 @@ class UserController extends UserControllerSchema implements Controller {
         try {
             const { name, email, password } = req.body;
             const token = this.UserService.register(name, email, password, 'user');
-            return res.status(201).json({ token });
+            return res.status(StatusCodes.CREATED).json({ token });
         } catch (error: any) {
-            next(new HttpException(400, error.message));
+            next(new HttpException(StatusCodes.BAD_REQUEST, error.message));
         }
     };
 
@@ -49,7 +50,7 @@ class UserController extends UserControllerSchema implements Controller {
 
             const token = await this.UserService.login(email, password);
 
-            res.status(200).json({ token });
+            res.status(StatusCodes.OK).json({ token });
         } catch (error: any) {
             next(new HttpException(400, error.message));
         }
@@ -57,10 +58,10 @@ class UserController extends UserControllerSchema implements Controller {
 
     protected getUser = (req: Request, res: Response, next: NextFunction): Response | void => {
         if (!req.user) {
-            return next(new HttpException(404, 'no logged in user '));
+            return next(new HttpException(StatusCodes.NOT_FOUND, 'no logged in user '));
         }
 
-        res.status(200).json({});
+        res.status(StatusCodes.OK).json({});
         next();
     };
 }

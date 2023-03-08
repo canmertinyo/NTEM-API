@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import Joi from 'joi';
+import { ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCode } from 'http-status-codes';
 
 export function validationMiddleware(schema: Joi.Schema): RequestHandler {
     return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -18,7 +19,7 @@ export function validationMiddleware(schema: Joi.Schema): RequestHandler {
             error.details.forEach((error: Joi.ValidationErrorItem) => {
                 errors.push(error.message);
             });
-            res.status(400).send({ errors });
+            res.status(StatusCodes.BAD_REQUEST).send({ errors });
         }
     };
 }
