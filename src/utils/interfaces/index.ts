@@ -6,3 +6,5 @@ export * from './token.interface';
 export * from './user.interface';
 export * from './user.controller.schema';
 export * from './user.service.schema';
+export * from './post.controller.schema';
+export * from './post.service.schema';

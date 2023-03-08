@@ -1,8 +1,12 @@
 import { PostModel } from '@/resources/post/post.model';
-import { IPost } from '@/utils/interfaces';
+import { IPost, PostServiceSchema } from '@/utils/interfaces';
 
-export class PostService {
+export class PostService extends PostServiceSchema {
     private post = PostModel;
+
+    constructor() {
+        super();
+    }
 
     public async create(title: string, body: string): Promise<IPost> {
         try {
