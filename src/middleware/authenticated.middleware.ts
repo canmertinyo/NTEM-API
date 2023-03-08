@@ -6,7 +6,7 @@ import { UserModel } from '@/resources/user/user.model';
 import { IToken } from '@/utils/interfaces';
 import { HttpException } from '@/utils/exceptions/http.exception';
 
-async function authenticatedMiddleware(
+export async function authenticatedMiddleware(
     req: Request,
     res: Response,
     next: NextFunction
@@ -37,5 +37,3 @@ async function authenticatedMiddleware(
         return next(new HttpException(401, 'unauthorised'));
     }
 }
-
-export default authenticatedMiddleware;

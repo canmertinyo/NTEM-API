@@ -1,7 +1,11 @@
 import { UserModel } from '@/resources/user/user.model';
 import { createToken } from '@/utils/token';
+import { UserServiceSchema } from '@/utils/interfaces';
 
-export class UserService {
+export class UserService extends UserServiceSchema {
+    constructor() {
+        super();
+    }
     private user = UserModel;
     /**
      * Register a new user
