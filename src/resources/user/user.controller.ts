@@ -4,12 +4,12 @@ import { Controller } from '@/utils/interfaces';
 import { HttpException } from '@/utils/exceptions/http.exception';
 import { validationMiddleware } from '@/middleware/validation.middleware';
 import { register, login } from '@/resources/user/user.validation';
-import authenticated from '@/middleware/authenticated-middleware';
+import authenticated from '@/middleware/authenticated.middleware';
 
 import { UserService } from './user.service';
 
 class UserController implements Controller {
-    public path = '/';
+    public path = '/users';
     public router = Router();
 
     private UserService = new UserService();

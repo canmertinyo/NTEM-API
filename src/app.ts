@@ -40,7 +40,7 @@ export class App extends BaseAppController {
 
     protected initialiseControllers(controllers: Controller[]): void {
         controllers.forEach((controller: Controller) => {
-            this.express.use('/api/', controller.router);
+            this.express.use('/api', controller.router);
         });
     }
 

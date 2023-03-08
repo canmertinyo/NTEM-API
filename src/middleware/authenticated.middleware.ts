@@ -37,3 +37,5 @@ async function authenticatedMiddleware(
         return next(new HttpException(401, 'unauthorised'));
     }
 }
+
+export default authenticatedMiddleware;
