@@ -32,7 +32,7 @@ class UserController implements Controller {
         try {
             const { name, email, password } = req.body;
             const token = this.UserService.register(name, email, password, 'user');
-            res.status(201).json({ token });
+            return res.status(201).json({ token });
         } catch (error: any) {
             next(new HttpException(400, error.message));
         }

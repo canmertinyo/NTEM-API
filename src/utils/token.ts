@@ -4,11 +4,8 @@ import { IUser, IToken } from '@/utils/interfaces';
 
 export const createToken = (user: IUser): string => {
     const jwtSecret = process.env.JWT_SECRET as jwt.Secret;
-    const payload = {
-        userId: user._id
-    };
 
-    return jwt.sign(payload, jwtSecret, {
+    return jwt.sign({ id: user._id }, jwtSecret, {
         expiresIn: '1d'
     });
 };

@@ -1,10 +1,11 @@
 import { UserModel } from '@/resources/user/user.model';
-import { IUser } from '@/utils/interfaces';
-import { createToken, verifyToken } from '@/utils/token';
+import { createToken } from '@/utils/token';
 
 export class UserService {
     private user = UserModel;
-
+    /**
+     * Register a new user
+     */
     public async register(
         name: string,
         email: string,
@@ -26,7 +27,9 @@ export class UserService {
             return new Error(error);
         }
     }
-
+    /**
+     * Attempt to login a user
+     */
     public async login(email: string, password: string): Promise<string | Error> {
         try {
             const user = await this.user.findOne({ email });
@@ -41,7 +44,7 @@ export class UserService {
                 throw new Error('Wrong user input!');
             }
         } catch (error) {
-            throw new Error('unable to login');
+            throw new Error('unable to login1');
         }
     }
 }
