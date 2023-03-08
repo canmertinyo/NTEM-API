@@ -9,7 +9,7 @@ import authenticated from '@/middleware/authenticated-middleware';
 import { UserService } from './user.service';
 
 class UserController implements Controller {
-    public path = '/ ';
+    public path = '/';
     public router = Router();
 
     private UserService = new UserService();
