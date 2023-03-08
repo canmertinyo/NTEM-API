@@ -7,6 +7,6 @@ export const register = Joi.object({
 });
 
 export const login = Joi.object({
-    name: Joi.string().required(),
+    password: Joi.string().required(),
     email: Joi.string().email().required()
 });

@@ -60,6 +60,7 @@ class UserController implements Controller {
         }
 
         res.status(200).json({ user: req.body });
+        next();
     };
 }
 
